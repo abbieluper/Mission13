@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Add a Bowler";
+}
+
+@model Bowler
+
+<h2 class="display-4 lh-1 mb-1" style="font-size:30px;">Add Bowler</h2>
+
+<div>
+    <fieldset style="width: 250px;">
+        <form method="post">
+
+            <div asp-validation-summary="All"></div>
+
+            <label asp-for="BowlerFirstName">First Name: </label>
+            <br />
+            <input asp-for="BowlerFirstName" />
+            <br /><br />
+
+            <label asp-for="BowlerMiddleInit">Middle Initial: </label>
+            <br />
+            <input asp-for="BowlerMiddleInit" />
+            <br /><br />
+
+            <label asp-for="BowlerLastName">Last Name: </label>
+            <br />
+            <input asp-for="BowlerLastName" />
+            <br /><br />
+
+            <label asp-for="BowlerAddress">Address: </label>
+            <br />
+            <input asp-for="BowlerAddress" />
+            <br /><br />
+
+            <label asp-for="BowlerCity">City: </label>
+            <br />
+            <input asp-for="BowlerCity" />
+            <br /><br />
+
+            <label asp-for="BowlerState">State: </label>
+            <br />
+            <input asp-for="BowlerState" />
+            <br /><br />
+
+            <label asp-for="BowlerZip">Zip Code: </label>
+            <br />
+            <input asp-for="BowlerZip" />
+            <br /><br />
+
+            <label asp-for="BowlerPhoneNumber">Phone Number: </label>
+            <br />
+            <input asp-for="BowlerPhoneNumber" />
+            <br /><br />
+
+            <label asp-for="TeamID">Team: </label>
+            <br />
+            <select asp-for="TeamID">
+                <option value="">Select a Team</option>
+                @foreach (Team t in ViewBag.Teams)
+                {
+                    <option value="@t.TeamID">@t.TeamName</option>
+                }
+            </select>
+            <br /><br />
+
+            <button class="btn btn-primary" type="submit">Add Bowler</button>
+
+        </form>
+    </fieldset>
+</div>
+
+<br /><br />

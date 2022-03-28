@@ -1,0 +1,87 @@
+﻿@*Abbie Luper
+    Index page -- this page allows user to view all of the bowlers*@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Bowler>
+
+<h2 class="display-4 lh-1 mb-2">Bowlers</h2>
+
+@*display the correct team name when the user filters by a team*@
+@foreach (Team t in ViewBag.headerTest)
+{
+    <h2 class="lead fw-normal text-muted mb-lg-0" style="font-size:28px;">Team @t.TeamName</h2>
+}
+
+<br />
+
+@*dropdown to filter bowlers by team name*@
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle fw-normal" type="button" data-toggle="dropdown">
+        Filter by Team
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        @foreach (Team t in ViewBag.Teams)
+        {
+            <li style="padding-left:7px;"><a asp-controller="Home" asp-action="Filter" asp-route-teamid="@t.TeamID">@t.TeamName</a></li>
+        }
+    </ul>
+</div>
+<br />
+
+
+<table class="table table-dark table-striped">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <td>First Name</td>
+            <td>Middle Initial</td>
+            <td>Last Name</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip</td>
+            <td>Phone Number</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.BowlerFirstName</td>
+                <td>@x.BowlerMiddleInit</td>
+                <td>@x.BowlerLastName</td>
+                <td>@x.BowlerAddress</td>
+                <td>@x.BowlerCity</td>
+                <td>@x.BowlerState</td>
+                <td>@x.BowlerZip</td>
+                <td>@x.BowlerPhoneNumber</td>
+
+                <td><a asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@x.BowlerID">Edit</a></td>
+                <td><a asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@x.BowlerID">Delete</a></td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+<br />
+
+<div>
+    <a class="btn btn-primary" asp-controller="Home" asp-action="Index">Home</a>
+</div>
+
+<br />
+
+<div>
+    <a class="btn btn-primary" asp-controller="Home" asp-action="AddBowler">Add a Bowler</a>
+</div>
+
+<br />
+
+
