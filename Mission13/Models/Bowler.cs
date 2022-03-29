@@ -20,7 +20,6 @@ namespace Mission13.Models
 
         public string BowlerCity { get; set; }
 
-        [MaxLength(2)]
         public string BowlerState { get; set; }
 
         public string BowlerZip { get; set; }
